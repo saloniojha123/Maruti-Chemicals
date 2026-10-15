@@ -1,0 +1,25 @@
+/* ==========================================================
+   Section labels ("OUR PRODUCT RANGE", "INDUSTRIES WE SERVE", ...)
+   Only the size changes. The colour stays as it is.
+   ========================================================== */
+
+:root {
+  /* Was 12px. Now 13px on phones, growing to 15px on large screens.
+     To make them bigger or smaller, change the three numbers. */
+  --eyebrow-size: clamp(0.8125rem, 0.78rem + 0.2vw, 0.9375rem);
+}
+
+/* "body" in front makes these rules win over the base style in global.css */
+body .eyebrow,
+body .hero__eyebrow {
+  font-size: var(--eyebrow-size);
+  line-height: 1.4;
+}
+
+/* Slightly less letter-spacing, so the larger text doesn't look stretched */
+body .eyebrow {
+  letter-spacing: 0.12em;
+}
+body .hero__eyebrow {
+  letter-spacing: 0.14em;
+}

@@ -1,0 +1,80 @@
+/* ==========================================================
+   Certificates section
+   ========================================================== */
+
+.certificates__header {
+  max-width: 680px;
+  margin-bottom: var(--space-8);
+}
+.certificates__header p:not(.eyebrow) {
+  margin-top: var(--space-3);
+}
+
+.certificates__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--space-6);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.certificate-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-6);
+  background: var(--white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform var(--duration-base) var(--ease),
+    box-shadow var(--duration-base) var(--ease);
+}
+.certificate-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.certificate-card__icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  margin-bottom: var(--space-2);
+  border-radius: var(--radius-md);
+  background: var(--color-soft);
+  color: var(--forest);
+}
+
+.certificate-card h3 {
+  font-size: var(--text-card);
+}
+
+.certificate-card__meta {
+  font-size: var(--text-small);
+  color: var(--color-text-muted);
+}
+
+.certificate-card__description {
+  flex: 1;                      /* keeps the buttons level across cards */
+  font-size: var(--text-small);
+}
+
+.certificate-card__download {
+  width: 100%;
+  margin-top: var(--space-4);
+}
+
+/* Shown while no certificates have been added yet */
+.certificates__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+  padding: var(--space-8);
+  background: var(--white);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-lg);
+}

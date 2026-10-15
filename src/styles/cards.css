@@ -1,0 +1,145 @@
+/* ==========================================================
+   Cards: refined look, palette colours only
+   (forest, sage, ivory, copper, white)
+   Loaded last, so these rules override components.css,
+   home.css and certificates.css.
+   ========================================================== */
+
+:root {
+  /* ONE place to change the surface colour of all these cards.
+     ivory = the colour they had before.
+     To try white later, change it to var(--white). */
+  --card-surface: var(--ivory);
+
+  /* Slightly stronger border so ivory cards stand out from the page.
+     This is forest green at low opacity. */
+  --card-border: rgb(36 55 45 / 18%);
+}
+
+/* ---- Shared: soft shadow, accent line on top ---- */
+.industry-card,
+.benefit-card {
+  position: relative;
+  overflow: hidden;                 /* keeps the top line inside the rounded corners */
+  background: var(--card-surface);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Resting top line: sage */
+.industry-card::before,
+.benefit-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: var(--sage);
+}
+
+/* Hover top line: copper sweeps in from the left */
+.industry-card::after,
+.benefit-card::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: var(--copper);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--duration-base) var(--ease);
+}
+.industry-card:hover::after,
+.industry-card:focus-within::after,
+.benefit-card:hover::after,
+.benefit-card:focus-within::after {
+  transform: scaleX(1);
+}
+
+.industry-card:hover,
+.industry-card:focus-within,
+.benefit-card:hover,
+.benefit-card:focus-within {
+  box-shadow: var(--shadow-lg);
+}
+
+/* ---- Other cards that use the same surface colour ---- */
+.featured-products .product-card,
+.certificate-card,
+.certificates__empty {
+  background: var(--card-surface);
+}
+.featured-products .product-card,
+.certificate-card {
+  border-color: var(--card-border);
+}
+
+/* ---- Industry cards ---- */
+
+/* Soft sage glow in the top-right corner */
+.industry-card {
+  min-height: 0;
+  background:
+    radial-gradient(circle at 100% 0%, rgb(183 196 163 / 28%) 0, transparent 46%),
+    var(--card-surface);
+}
+
+.industry-card__number {
+  width: 48px;
+  height: 48px;
+  margin-bottom: var(--space-6);
+  font-size: var(--text-small);
+  box-shadow: 0 0 0 6px rgb(183 196 163 / 35%);   /* sage halo */
+  transition:
+    transform var(--duration-fast) var(--ease),
+    box-shadow var(--duration-base) var(--ease);
+}
+.industry-card:hover .industry-card__number,
+.industry-card:focus-within .industry-card__number {
+  box-shadow: 0 0 0 9px rgb(183 196 163 / 45%);
+}
+
+/* Fixes the big gap under the title: it no longer reserves two lines */
+.industry-card h3 {
+  min-height: 0;
+  margin-bottom: var(--space-3);
+  font-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
+}
+
+.industry-card p {
+  flex: 1;                           /* pushes the link to the bottom */
+  margin-bottom: var(--space-6);
+}
+
+/* Link row: divider above, arrow on the right */
+.industry-card .text-link {
+  align-self: stretch;
+  justify-content: space-between;
+  margin-top: 0;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--card-border);
+}
+.industry-card .text-link:hover {
+  gap: var(--space-2);               /* keep the arrow at the right edge */
+}
+
+/* ---- "Why Maruti" cards ---- */
+.benefit-card__icon {
+  width: 56px;
+  height: 56px;
+  transition:
+    transform var(--duration-fast) var(--ease),
+    color var(--duration-fast) var(--ease),
+    background-color var(--duration-fast) var(--ease);
+}
+.benefit-card:hover .benefit-card__icon,
+.benefit-card:focus-within .benefit-card__icon {
+  background: var(--forest);
+  color: var(--ivory);
+}
+
+/* ---- Phones ---- */
+@media (max-width: 600px) {
+  .industry-card {
+    min-height: 0;
+  }
+}

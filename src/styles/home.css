@@ -1,0 +1,165 @@
+/* ==========================================================
+   Home page: hero, background molecule, spacing, featured products
+   Loaded after components.css, so these rules override it.
+   ========================================================== */
+
+/* ---- Hero text: wide box, heading flows naturally ---- */
+.hero__inner {
+  position: relative;
+  z-index: 1;
+  grid-template-columns: 1fr;
+}
+.hero__content { max-width: 1000px; }
+.hero__title { max-width: none; }
+.hero__title span {
+  display: inline;      /* was a block: this forced the line break */
+  margin-top: 0;
+}
+.hero__description { max-width: 640px; }
+
+/* ---- Hero background molecule ---- */
+.hero__background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.hero__background svg {
+  width: 100%;
+  height: 100%;
+}
+
+.hero-molecule {
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+.hero-molecule line {
+  stroke: var(--sage);
+  stroke-width: 7;
+  stroke-linecap: round;
+  opacity: 0.55;
+}
+.hero-molecule circle {
+  fill: url(#sphere-sage);
+  opacity: 1;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: hero-breathe 6s ease-in-out infinite alternate;
+}
+.hero-molecule circle:nth-of-type(2n) { animation-delay: -3s; }
+.hero-molecule circle.is-accent {
+  fill: url(#sphere-copper);
+  opacity: 1;
+}
+
+/* Medium speed: the whole cluster floats and turns */
+.hero-molecule--a { animation: hero-drift-a 11s ease-in-out infinite alternate; }
+.hero-molecule--b { animation: hero-drift-b 13s ease-in-out infinite alternate; }
+.hero-molecule--c { animation: hero-drift-c 9s ease-in-out infinite alternate; }
+
+@keyframes hero-drift-a {
+  from { transform: translate(0, 0) rotate(0deg); }
+  to   { transform: translate(-26px, 18px) rotate(4deg); }
+}
+@keyframes hero-drift-b {
+  from { transform: translate(0, 0) rotate(0deg); }
+  to   { transform: translate(22px, -18px) rotate(-5deg); }
+}
+@keyframes hero-drift-c {
+  from { transform: translate(0, 0); }
+  to   { transform: translate(-16px, 22px); }
+}
+@keyframes hero-breathe {
+  from { transform: scale(1); }
+  to   { transform: scale(1.07); }
+}
+
+/* Small particles floating up */
+.hero-particles circle {
+  fill: var(--sage);
+  opacity: 0.6;
+  animation: hero-float 9s ease-in-out infinite alternate;
+}
+@keyframes hero-float {
+  from { transform: translateY(0); opacity: 0.25; }
+  to   { transform: translateY(-34px); opacity: 0.7; }
+}
+
+/* On phones the text covers the full width, so keep the background fainter */
+@media (max-width: 700px) {
+  .hero__background { opacity: 0.5; }
+}
+
+/* ---- Tighter spacing between Home sections ---- */
+.home .section { padding-block: clamp(2.5rem, 5vw, 4rem); }
+.hero { padding-block: clamp(2.5rem, 5vw, 4.5rem); }
+.contact-cta { padding-block: clamp(2.5rem, 5vw, 4rem); }
+
+.featured-products__header,
+.industries-preview__header,
+.why-choose-us__header { margin-bottom: var(--space-8); }
+.featured-products__footer,
+.industries-preview__footer { margin-top: var(--space-8); }
+
+/* ---- Featured products: richer look ---- */
+.featured-products__description {
+  margin-top: var(--space-3);
+  max-width: 52ch;
+}
+
+.featured-products__filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-8);
+}
+.featured-products__filters-label {
+  margin-right: var(--space-2);
+  font-size: var(--text-small);
+  font-weight: 700;
+}
+.featured-products__filters .product-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.featured-products__grid { gap: var(--space-6); }
+
+.featured-products .product-card {
+  position: relative;
+  background: var(--white);   /* palette white. Delete this line to go back to ivory */
+  box-shadow: var(--shadow-sm);
+}
+.featured-products .product-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  height: 3px;
+  background: var(--copper);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--duration-base) var(--ease);
+}
+.featured-products .product-card:hover::before,
+.featured-products .product-card:focus-within::before {
+  transform: scaleX(1);
+}
+.featured-products .product-card:hover,
+.featured-products .product-card:focus-within {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+@media (max-width: 900px) {
+  .featured-products__header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

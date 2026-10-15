@@ -1,0 +1,136 @@
+/* ==========================================================
+   Compact, constant-height intro banners for inner pages
+   (About, Industries + its 3 pages, Products, Why Us, Contact)
+   Home keeps its own hero.
+   Loaded after components.css, so these rules override it.
+   ========================================================== */
+
+:root {
+  /* One number controls the banner height on every inner page */
+  --page-hero-height: 320px;
+}
+
+/* ---- 1. Same height everywhere, text centred inside ---- */
+:is(
+  .about-hero,
+  .industries-hero,
+  .industry-detail-hero,
+  .products-hero,
+  .why-page-hero,
+  .contact-page-hero
+) {
+  display: flex;
+  align-items: center;
+  min-height: var(--page-hero-height);
+  padding-block: 1.5rem;
+}
+
+:is(
+  .about-hero,
+  .industries-hero,
+  .industry-detail-hero,
+  .products-hero,
+  .why-page-hero,
+  .contact-page-hero
+) > .container {
+  width: 100%;
+}
+
+/* ---- 2. Heading size from your spec: about 36 to 48px ---- */
+:is(
+  .about-hero,
+  .industries-hero,
+  .industry-detail-hero,
+  .products-hero,
+  .why-page-hero,
+  .contact-page-hero
+) h1 {
+  max-width: 900px;
+  font-size: clamp(2rem, 4.2vw, 3rem);
+  line-height: 1.1;
+}
+
+/* About: let the coloured part flow after the white part */
+.about-hero h1 span {
+  display: inline;
+}
+
+/* ---- 3. Smaller gaps inside the banner ---- */
+:is(
+  .about-hero,
+  .industries-hero,
+  .products-hero,
+  .why-page-hero,
+  .contact-page-hero
+) .eyebrow {
+  margin-bottom: 0.75rem;
+}
+
+.about-hero__description,
+.industries-hero__inner > p:last-child,
+.industry-detail-hero__description,
+.products-hero__inner > p:last-child,
+.why-page-hero__inner > p:not(.eyebrow),
+.contact-page-hero__inner > p:last-child {
+  max-width: 720px;
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+.why-page-hero__inner > p:not(.eyebrow) {
+  margin-bottom: 1.25rem;
+}
+
+.industry-detail-hero__breadcrumb {
+  margin-bottom: 1rem;
+}
+.industry-detail-hero .button {
+  margin-top: 1rem;
+}
+
+/* ---- 4. Content starts sooner after the banner ---- */
+:is(
+  .about-hero,
+  .industries-hero,
+  .industry-detail-hero,
+  .products-hero,
+  .why-page-hero,
+  .contact-page-hero
+) + .section {
+  padding-top: clamp(2rem, 4vw, 3rem);
+}
+
+/* ---- 5. Smaller decorative orb to suit the shorter banner ---- */
+:is(
+  .about-hero,
+  .industries-hero,
+  .industry-detail-hero,
+  .products-hero,
+  .why-page-hero,
+  .contact-page-hero
+)::after {
+  top: 12%;
+  width: clamp(150px, 22vw, 300px);
+}
+
+/* ---- 6. Home hero: remove the flat orb ---- */
+/* The orb patch at the end of components.css also draws on the Home hero,
+   and sits on top of the new molecule. Home has its own background now. */
+.hero::after {
+  content: none;
+}
+
+/* ---- 7. Phones: let the text decide the height ---- */
+@media (max-width: 700px) {
+  :is(
+    .about-hero,
+    .industries-hero,
+    .industry-detail-hero,
+    .products-hero,
+    .why-page-hero,
+    .contact-page-hero
+  ) {
+    min-height: 0;
+    padding-block: 2rem;
+  }
+}
