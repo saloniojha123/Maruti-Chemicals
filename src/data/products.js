@@ -1,104 +1,4 @@
-// // Editable starter catalogue based on common supply enquiries and the company reference.
-// // Confirm current availability, grade, concentration, specifications and suitability before publishing or quoting.
-// const productGroups = [
-//   {
-//     category: "Pharmaceutical Industry",
-//     products: [
-//       ["Isopropyl Alcohol", "Solvent and process-supply enquiry option; confirm grade, concentration and intended use."],
-//       ["Hydrogen Peroxide", "Available for enquiries requiring a specified concentration and application."],
-//       ["Sodium Chloride", "A core inorganic material; confirm grade, pack size and specification."],
-//       ["Sodium Hydroxide", "Alkali supply option; concentration, form and handling requirements to be confirmed."],
-//       ["Citric Acid", "Multi-sector acidulant and process material; confirm grade and specification."],
-//       ["Glycerine", "Glycerine (glycerol) supply option; confirm grade, source and intended application."],
-//       ["Ethanol", "Alcohol supply enquiry; confirm applicable grade, concentration and regulatory requirements."],
-//       ["Acetic Acid", "Acid supply option; confirm concentration, grade and handling requirements."],
-//       ["Acetone", "Solvent supply enquiry; confirm specification, pack size and intended use."],
-//       ["Sterile Tape", "Cleanroom and pharma-grade adhesion product shown in the company reference; confirm availability and specification."],
-//     ],
-//   },
-//   {
-//     category: "Food Industry",
-//     products: [
-//       ["Citric Acid", "Food-processing supply enquiry; confirm the required food grade and specifications."],
-//       ["Sodium Bicarbonate", "Food-processing ingredient option; confirm grade and intended application."],
-//       ["Sodium Chloride", "Salt supply option for food-sector enquiries; confirm grade, packaging and specifications."],
-//       ["Ascorbic Acid", "Ingredient supply enquiry; confirm applicable grade and use requirements."],
-//       ["Sodium Benzoate", "Preservative supply enquiry; confirm grade and local requirements for intended use."],
-//       ["Potassium Sorbate", "Food ingredient option; confirm grade and intended application with the supplier."],
-//       ["Calcium Propionate", "Ingredient supply enquiry; confirm specification and application requirements."],
-//       ["Xanthan Gum", "Food-processing ingredient option; confirm grade, viscosity specification and pack size."],
-//       ["Sorbitol", "Ingredient supply enquiry; confirm grade, form and intended application."],
-//       ["Glucose", "Food-processing supply option; confirm product form, grade and specifications."],
-//     ],
-//   },
-//   {
-//     category: "Hospitals & Healthcare",
-//     products: [
-//       ["Hydrogen Peroxide", "Institutional supply enquiry; confirm concentration, intended use and handling requirements."],
-//       ["Isopropyl Alcohol", "Healthcare or laboratory supply enquiry; confirm grade and application before ordering."],
-//       ["Sodium Hypochlorite", "Cleaning and process supply enquiry; confirm concentration and handling requirements."],
-//       ["Ethanol", "Institutional alcohol supply enquiry; confirm grade, concentration and applicable requirements."],
-//       ["Glycerine", "Healthcare-sector supply enquiry; confirm grade, pack size and intended application."],
-//       ["Sodium Chloride", "Institutional supply option; confirm grade, specification and intended use."],
-//       ["Acetic Acid", "Laboratory or process supply enquiry; confirm concentration, grade and handling needs."],
-//       ["Liquid Sampling Bags", "Sterile, leak-proof sample-collection product shown in the company reference; confirm sizes and specification."],
-//       ["Sterile Tape", "Cleanroom and healthcare supply option shown in the company reference; confirm availability and specification."],
-//       ["Sodium Bicarbonate", "Institutional supply enquiry; confirm grade and intended application with the supplier."],
-//     ],
-//   },
-// ];
 
-// const productImages = {
-//   "Isopropyl Alcohol": "/images/isopropyl-alcohol.jpg",
-//   "Hydrogen Peroxide": "/images/hydrogen-peroxide.jpg",
-//   "Sodium Chloride": "/images/sodium-chloride.jpg",
-//   "Sodium Hydroxide": "/images/sodium-hydroxide.jpg",
-//   "Citric Acid": "/images/citric-acid.jpg",
-//   Glycerine: "/images/glycerine.jpg",
-//   Ethanol: "/images/ethanol.jpg",
-//   "Acetic Acid": "/images/acetic-acid.jpg",
-//   Acetone: "/images/acetone.jpg",
-//   "Sterile Tape": "/images/sterile-tape.jpg",
-//   "Sodium Bicarbonate": "/images/sodium-bicarbonate.jpg",
-//   "Ascorbic Acid": "/images/ascorbic-acid.jpg",
-//   "Sodium Benzoate": "/images/sodium-benzoate.jpg",
-//   "Potassium Sorbate": "/images/potassium-sorbate.jpg",
-//   "Calcium Propionate": "/images/calcium-propionate.jpg",
-//   "Xanthan Gum": "/images/xanthan-gum.jpg",
-//   Sorbitol: "/images/sorbitol.jpg",
-//   Glucose: "/images/glucose.jpg",
-//   "Sodium Hypochlorite": "/images/sodium-hypochlorite.jpg",
-//   "Liquid Sampling Bags": "/images/liquid-sampling-bags.jpg",
-// };
-
-
-
-// export const products = productGroups.flatMap(
-//   ({ category, products: items }, groupIndex) =>
-//     items.map(([name, description], itemIndex) => ({
-//       id: groupIndex * 10 + itemIndex + 1,
-//       name,
-//       category,
-//       description,
-//       image: productImages[name] || "",
-//     })),
-// );
-
-// export const productCategories = productGroups.map(
-//   ({ category }) => category,
-// );
-
-
-// src/data/products.js
-// ------------------------------------------------------------------
-// Single source of truth for the product catalogue.
-// - One entry per product.
-// - A product can belong to several industries.
-// - To add a product, add one line to the `catalogue` list below.
-//
-// NOTE: this is a starter list. Confirm every product name and
-// description with Maruti Chemicals before the site goes live.
-// ------------------------------------------------------------------
 
 export const industries = [
   "Pharmaceutical Industry",
@@ -223,21 +123,146 @@ const slugify = (text) =>
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "");
 
+
+    
+const sampleSpecs = {
+  "isopropyl-alcohol": {
+    chemicalType: "Solvent",
+    sampleGrade: "Industrial Grade",
+    samplePackaging: "25 L / 200 L drum",
+    casNumber: "67-63-0",
+  },
+  "hydrogen-peroxide": {
+    chemicalType: "Oxidising Agent",
+    sampleGrade: "Technical Grade",
+    samplePackaging: "5 L / 30 L container",
+    casNumber: "7722-84-1",
+  },
+  "sodium-chloride": {
+    chemicalType: "Inorganic Salt",
+    sampleGrade: "Food / Industrial Grade",
+    samplePackaging: "25 kg bag",
+    casNumber: "7647-14-5",
+  },
+  "sodium-hydroxide": {
+    chemicalType: "Alkali",
+    sampleGrade: "Industrial Grade",
+    samplePackaging: "25 kg bag",
+    casNumber: "1310-73-2",
+  },
+  "citric-acid": {
+    chemicalType: "Organic Acid",
+    sampleGrade: "Food / Pharmaceutical Grade",
+    samplePackaging: "25 kg bag",
+    casNumber: "77-92-9",
+  },
+  "glycerine": {
+    chemicalType: "Polyol",
+    sampleGrade: "Industrial / Refined Grade",
+    samplePackaging: "25 kg / 250 kg drum",
+    casNumber: "56-81-5",
+  },
+  "ethanol": {
+    chemicalType: "Solvent",
+    sampleGrade: "Industrial Grade",
+    samplePackaging: "5 L / 200 L drum",
+    casNumber: "64-17-5",
+  },
+  "acetic-acid": {
+    chemicalType: "Organic Acid",
+    sampleGrade: "Industrial Grade",
+    samplePackaging: "30 L / 200 L drum",
+    casNumber: "64-19-7",
+  },
+  "acetone": {
+    chemicalType: "Solvent",
+    sampleGrade: "Industrial Grade",
+    samplePackaging: "5 L / 200 L drum",
+    casNumber: "67-64-1",
+  },
+  "sterile-tape": {
+    chemicalType: "Laboratory / Cleanroom Supply",
+    sampleGrade: "Application-Specific",
+    samplePackaging: "Sample pack / Bulk pack",
+    casNumber: "Not applicable",
+  },
+  "sodium-bicarbonate": {
+    chemicalType: "Inorganic Salt",
+    sampleGrade: "Food / Industrial Grade",
+    samplePackaging: "25 kg bag",
+    casNumber: "144-55-8",
+  },
+  "ascorbic-acid": {
+    chemicalType: "Organic Acid",
+    sampleGrade: "Food Grade",
+    samplePackaging: "25 kg bag",
+    casNumber: "50-81-7",
+  },
+  "sodium-benzoate": {
+    chemicalType: "Preservative",
+    sampleGrade: "Food Grade",
+    samplePackaging: "25 kg bag",
+    casNumber: "532-32-1",
+  },
+  "potassium-sorbate": {
+    chemicalType: "Preservative",
+    sampleGrade: "Food Grade",
+    samplePackaging: "25 kg bag",
+    casNumber: "24634-61-5",
+  },
+  "calcium-propionate": {
+    chemicalType: "Preservative",
+    sampleGrade: "Food Grade",
+    samplePackaging: "25 kg bag",
+    casNumber: "4075-81-4",
+  },
+  "xanthan-gum": {
+    chemicalType: "Thickener",
+    sampleGrade: "Food Grade",
+    samplePackaging: "25 kg bag",
+    casNumber: "11138-66-2",
+  },
+  "sorbitol": {
+    chemicalType: "Polyol",
+    sampleGrade: "Food Grade",
+    samplePackaging: "25 kg bag / liquid drum",
+    casNumber: "50-70-4",
+  },
+  "glucose": {
+    chemicalType: "Carbohydrate",
+    sampleGrade: "Food Grade",
+    samplePackaging: "25 kg bag",
+    casNumber: "50-99-7",
+  },
+  "sodium-hypochlorite": {
+    chemicalType: "Disinfectant",
+    sampleGrade: "Technical Grade",
+    samplePackaging: "5 L / 30 L container",
+    casNumber: "7681-52-9",
+  },
+  "liquid-sampling-bags": {
+    chemicalType: "Laboratory Consumable",
+    sampleGrade: "Application-Specific",
+    samplePackaging: "Pack / Bulk pack",
+    casNumber: "Not applicable",
+  },
+};
+
+// Existing product data, enriched with sample specifications.
 export const products = catalogue.map((item) => {
   const id = slugify(item.name);
 
   return {
     id,
     ...item,
-    // Image file for each product goes in public/images/<id>.jpg
     image: `/images/${id}.jpg`,
-    // TEMPORARY: old pages still read product.category.
-    // We remove this line in Step 3 when Products.jsx is updated.
     category: item.industries[0],
+    ...(sampleSpecs[id] || {}),
   };
 });
 
-export const featuredProducts = products.filter((product) => product.featured);
+export const featuredProducts = products.filter(
+  (product) => product.featured
+);
 
-// Kept so the current Products.jsx import keeps working
 export const productCategories = industries;
